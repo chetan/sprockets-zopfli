@@ -17,10 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "zopfli-bin"
   gem.homepage = "http://github.com/chetan/zopfli-bin"
   gem.license = "MIT"
-  gem.summary = %Q{A thin wrapper around the zoplfi binary}
-  gem.description = %Q{A thin wrapper around the zoplfi binary (included as an ext)}
+  gem.summary = %Q{A thin wrapper around the zopfli binary}
+  gem.description = %Q{A thin wrapper around the zopfli binary (included and built as an ext)}
   gem.email = "chetan@pixelcop.net"
   gem.authors = ["Chetan Sarva"]
+  gem.files.include "ext/Makefile", Dir.glob("vendor/zopfli/**/*")
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -32,13 +33,7 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-desc "Code coverage detail"
-task :simplecov do
-  ENV['COVERAGE'] = "true"
-  Rake::Task['test'].execute
-end
-
-task :default => :test
+task :default => :build
 
 require 'yard'
 YARD::Rake::YardocTask.new

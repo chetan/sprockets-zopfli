@@ -1,19 +1,4 @@
-require 'simplecov'
 
-module SimpleCov::Configuration
-  def clean_filters
-    @filters = []
-  end
-end
-
-SimpleCov.configure do
-  clean_filters
-  load_adapter 'test_frameworks'
-end
-
-ENV["COVERAGE"] && SimpleCov.start do
-  add_filter "/.rvm/"
-end
 require 'rubygems'
 require 'bundler'
 begin
@@ -23,13 +8,12 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'minitest/unit'
+require 'micron'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'zopfli-bin'
 
-class MiniTest::Unit::TestCase
-end
-
-MiniTest::Unit.autorun
+EasyCov.path = "coverage"
+EasyCov.filters << EasyCov::IGNORE_GEMS << EasyCov::IGNORE_STDLIB
+EasyCov.start
