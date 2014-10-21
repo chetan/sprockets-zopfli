@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Chetan Sarva"]
-  s.date = "2014-10-20"
+  s.date = "2014-10-21"
   s.description = "A thin wrapper around the zopfli binary (included and built as an ext)"
   s.email = "chetan@pixelcop.net"
   s.extensions = ["ext/extconf.rb"]
