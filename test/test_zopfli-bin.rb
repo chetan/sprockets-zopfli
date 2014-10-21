@@ -24,8 +24,6 @@ class TestZopfliBin < Micron::TestCase
     assert Zopfli::Bin.compress(@file, false)
     assert File.exists?(@gz)
 
-    puts `ls -al #{@gz}`
-
     cmd = Mixlib::ShellOut.new("gunzip -c #{@gz}")
     puts cmd.command
     cmd.run_command
