@@ -30,4 +30,14 @@ class TestZopfliBin < Micron::TestCase
     assert cmd.stdout =~ /rubygems/
   end
 
+  def test_compress_png
+    assert Zopfli::Bin.available?(Zopfli::Bin::PATH_PNG)
+
+    file = File.expand_path("../test.png", __FILE__)
+    dest = "#{file}.2.png"
+    assert Zopfli::Bin.compress_png(file, dest)
+    assert File.exists?(dest)
+    File.unlink(dest)
+  end
+
 end
