@@ -10,7 +10,7 @@ module Zopfli
     #
     # @return [Boolean] true if available
     def self.available?
-      File.exists?(PATH)
+      File.exists?(PATH) && File.executable?(PATH)
     end
 
     # Compress the given file
