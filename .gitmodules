@@ -1,3 +1,4 @@
 [submodule "vendor/zopfli"]
-	path = vendor/zopfli
-	url = https://github.com/google/zopfli.git
+  path = vendor/zopfli
+  url = https://github.com/google/zopfli.git
+  ignore = dirty
